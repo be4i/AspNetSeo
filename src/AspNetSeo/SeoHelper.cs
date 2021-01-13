@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using AspNetSeo.Internal;
 
@@ -11,6 +12,9 @@ namespace AspNetSeo
 
         public IDictionary<string, string> CustomMetas { get; }
             = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        public IDictionary<string, string[]> CustomOgs { get; }
+            = new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase);
 
         public string DocumentTitle => DocumentTitleValue.Get(this);
 
@@ -49,6 +53,22 @@ namespace AspNetSeo
                 throw new ArgumentNullException(nameof(key));
 
             CustomMetas[key] = value;
+        }
+
+        public void SetCustomOg(string key, params string[] values)
+        {
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+
+            if (values != null && 
+                CustomOgs.TryGetValue(key, out var keyValues))
+            {
+                CustomOgs[key] = keyValues.Concat(values).ToArray();
+            }
+            else
+            {
+                CustomOgs[key] = values;
+            }
         }
 
         public string SetMetaRobots(bool index, bool follow)

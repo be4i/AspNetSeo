@@ -6,6 +6,8 @@ namespace AspNetSeo
     {
         IDictionary<string, string> CustomMetas { get; }
 
+        IDictionary<string, string[]> CustomOgs { get; }
+
         string DocumentTitle { get; }
 
         string DocumentTitleFormat { get; set; }
@@ -37,6 +39,8 @@ namespace AspNetSeo
         string SiteUrl { get; set; }
 
         void SetCustomMeta(string key, string value);
+
+        void SetCustomOg(string key, params string[] values);
 
         string SetMetaRobots(bool index, bool follow);
     }
