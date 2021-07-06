@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.0;netcoreapp2.0;</TargetFrameworks>
+    <TargetFrameworks>net5.0</TargetFrameworks>
     
     <AssemblyName>AspNetSeo.CoreMvc</AssemblyName>
     <AssemblyTitle>ASP.NET Core MVC SEO</AssemblyTitle>
@@ -25,12 +25,7 @@
     <ProjectReference Include="..\AspNetSeo\AspNetSeo.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
+  <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.0.0" />
-  </ItemGroup>
-
 </Project>
